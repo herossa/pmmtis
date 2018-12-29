@@ -16,9 +16,13 @@ class MotionMonitor(Thread):
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.gpio_pin, GPIO.IN)
 
-    def run(self):        
+    def run(self):
+        image_send = 0
         while not self.stopper.is_set():
             res = GPIO.input(self.gpio_pin)
-            if res != 0 :
+            if res != 0 and image_send == 0:
                 self.alert_callback(None)
+                image_send = 1
+            if res == 0:
+                image_send = 0
             time.sleep(self.sleep_time)
