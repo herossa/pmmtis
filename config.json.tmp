@@ -1,0 +1,17 @@
+{
+    "TELEGRAM": {
+        "BOT_NAME": "",
+        "BOT_USER_NAME": "",
+        "BOT_API_TOKEN": ""
+    },
+    "TELEGRAM_MESSAGES": {
+        "START": "",
+        "IS_ALIVE": "",
+        "HELP": "",
+        "HELP_COMMANDS": [
+            "/is_alive",
+            "/capture",
+            "/capture_sample"
+        ]
+    }
+}

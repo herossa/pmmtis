@@ -28,7 +28,7 @@ def help(message):
 
 @telebot.message_handler(commands=['capture'])
 def capture(message):
-    telebot.send_photo(bot_conf['TELEGRAM'].get("BOT_ID", ""),
+    telebot.send_photo(message.chat.id,
                        image_capture.capture())
 
 @telebot.message_handler(commands=['capture_sample'])
@@ -44,7 +44,7 @@ def capture_sample(message):
         mp4_destiny_path
     ]
     if subprocess.call(command) == 0:
-        telebot.send_video(bot_conf['TELEGRAM'].get("BOT_ID", ""),
+        telebot.send_video(message.chat.id,
                            open(mp4_destiny_path, 'rb').read())
         if os.path.exists(mp4_destiny_path):
             os.remove(mp4_destiny_path)
